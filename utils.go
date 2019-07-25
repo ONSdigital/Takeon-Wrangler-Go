@@ -1,16 +1,16 @@
 package main
 
 func processQuestionCode(inputData responseData, questionCode string) bool{
+	println("response qCode: ", inputData.QuestionCode)
+	println("config qCode: ", questionCode )
 	if inputData.QuestionCode == questionCode{
 		return true
 	}
 	return false
 }
 
-func bothQAndDqFound(response responseData, config validationConfig) bool{
-	question := processQuestionCode(response, config.questionCode)
-	derivedQuestion := processQuestionCode(response, config.derivedQuestionCode)
-	if question && derivedQuestion{
+func bothQAndDqFound(found isFound) bool{
+	if found.qCodeIsFound && found.dqCodeIsFound{
 		return true
 	}
 	return false

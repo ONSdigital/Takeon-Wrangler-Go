@@ -17,16 +17,18 @@ func makePost(data PostData){
 
 	fmt.Printf(string(data.Data))
 
+	fmt.Printf(string(data.LambdaLocation)+"\n")
+
 	input := &lambda.InvokeInput{
 		FunctionName: aws.String(data.LambdaLocation),
-		Payload: data.Data,	
+		Payload: data.Data,
+		InvocationType: aws.String("RequestResponse"),
 	}
-	
+	fmt.Printf("sending from makePost: %+v\n", string(data.Data))
 	result, err := svc.Invoke(input)
-
 	if err != nil{
 		fmt.Errorf("There was an error during post: %s\n", err.Error)
 		panic(err)
 	}
-	println("Response: %s\n", result.StatusCode)
+	fmt.Printf("Response: %s\n", result.Payload)
 }

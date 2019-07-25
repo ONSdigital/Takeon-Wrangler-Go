@@ -18,3 +18,17 @@ type validationConfig struct{
 	questionCode string
 	derivedQuestionCode string
 }
+
+type isFound struct{
+	qCodeIsFound bool
+	dqCodeIsFound bool
+}
+
+type sendStruct struct{
+	Reference string `json:"reference"`
+	Period string `json:"period"`
+	Survey string `json:"survey"`
+	BpmID string `json:"instance"`
+
+
+}

@@ -38,20 +38,15 @@ func TestCheck(t *testing.T){
 func TestBothFound(t *testing.T){
 	var respData responseData
 	var dqData responseData
-	var config responseData
+	var config validationConfig
 	respData.QuestionCode = "123"
 	dqData.QuestionCode = "123"
-	config.QuestionCode = "123"
-	if bothQAndDqFound(respData, dqData, config) != true{
+	config.questionCode = "123"
+	if bothQAndDqFound(respData, config) != true{
 		t.Errorf("Function did not return true")
 	}
 	respData.QuestionCode = "111"
-	if bothQAndDqFound(respData, dqData, config) != false{
+	if bothQAndDqFound(respData, config) != false{
 		t.Errorf("Function didn't return false")
 	}
-}
-
-func TestResponseLoop(t *testing.T){
-	
-
 }
