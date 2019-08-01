@@ -67,7 +67,9 @@ functions:
     layers:
       - ${file(./config.dev.json):LAYER_NAME}
     environment:
-      lambda: takeon-val-comparison-dev-valueComparison
+      VALUE_COMPARISION_LAMBDA: takeon-val-comparison-dev-valueComparison
+      PERSIST_LAMBDA: response-persistence-lambda
+      TOPIC_ARN: ${file(./config.dev.json):TOPIC_ARN}
     # events:
     #   - http:
     #       path: hello
@@ -78,3 +80,4 @@ functions:
       subnetIds:
         - ${file(./config.dev.json):SUBNET_ID}
     timeout: 30
+    memorySize: 512
